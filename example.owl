@@ -1,0 +1,202 @@
+@prefix : <http://www.semanticweb.org/user/ontologies/2022/example#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://www.semanticweb.org/user/ontologies/2022/example> .
+
+<http://www.semanticweb.org/user/ontologies/2022/example> rdf:type owl:Ontology .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://www.semanticweb.org/user/ontologies/2022/example#admits
+:admits rdf:type owl:ObjectProperty ;
+        rdfs:domain :School ;
+        rdfs:range :Student ;
+        rdfs:comment "school admits students"@en .
+
+
+###  http://www.semanticweb.org/user/ontologies/2022/example#employs
+:employs rdf:type owl:ObjectProperty ;
+         rdfs:domain :School ;
+         rdfs:range :Staff ;
+         rdfs:comment "school employs staff"@en .
+
+
+###  http://www.semanticweb.org/user/ontologies/2022/example#learns
+:learns rdf:type owl:ObjectProperty ;
+        rdfs:domain :Student ;
+        rdfs:range :Subject ;
+        rdfs:comment "student learns the subject"@en .
+
+
+###  http://www.semanticweb.org/user/ontologies/2022/example#teaches
+:teaches rdf:type owl:ObjectProperty ;
+         rdfs:domain :Teacher ;
+         rdfs:range :Subject ;
+         rdfs:comment "teacher teachers the subject"@en .
+
+
+###  http://www.semanticweb.org/user/ontologies/2022/example#tidies
+:tidies rdf:type owl:ObjectProperty ;
+        rdfs:domain :House_Keeping ;
+        rdfs:range :School ;
+        rdfs:comment "house keeping tidies school"@en .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://www.semanticweb.org/user/ontologies/2022/example#JoinedID
+:JoinedID rdf:type owl:DatatypeProperty ;
+          rdfs:domain :Student ;
+          rdfs:range xsd:dateTime ;
+          rdfs:comment "indicates the joining dat of the student"@en .
+
+
+###  http://www.semanticweb.org/user/ontologies/2022/example#staffID
+:staffID rdf:type owl:DatatypeProperty ;
+         rdfs:domain :Staff ;
+         rdfs:range xsd:string .
+
+
+###  http://www.semanticweb.org/user/ontologies/2022/example#studentID
+:studentID rdf:type owl:DatatypeProperty ;
+           rdfs:domain :Student ;
+           rdfs:range xsd:string .
+
+
+###  http://www.semanticweb.org/user/ontologies/2022/example#teach
+:teach rdf:type owl:DatatypeProperty .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://www.semanticweb.org/user/ontologies/2022/example#Administrative
+:Administrative rdf:type owl:Class ;
+                rdfs:subClassOf :Non_Teaching .
+
+
+###  http://www.semanticweb.org/user/ontologies/2022/example#Govt
+:Govt rdf:type owl:Class ;
+      rdfs:subClassOf :School .
+
+
+###  http://www.semanticweb.org/user/ontologies/2022/example#House_Keeping
+:House_Keeping rdf:type owl:Class ;
+               rdfs:subClassOf :Non_Teaching .
+
+
+###  http://www.semanticweb.org/user/ontologies/2022/example#Junior_Student
+:Junior_Student rdf:type owl:Class ;
+                rdfs:subClassOf :Student .
+
+
+###  http://www.semanticweb.org/user/ontologies/2022/example#Maintenence
+:Maintenence rdf:type owl:Class ;
+             rdfs:subClassOf :Non_Teaching .
+
+
+###  http://www.semanticweb.org/user/ontologies/2022/example#Non_Teaching
+:Non_Teaching rdf:type owl:Class ;
+              rdfs:subClassOf :Staff .
+
+
+###  http://www.semanticweb.org/user/ontologies/2022/example#Private
+:Private rdf:type owl:Class ;
+         rdfs:subClassOf :School .
+
+
+###  http://www.semanticweb.org/user/ontologies/2022/example#School
+:School rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/user/ontologies/2022/example#Senior_Student
+:Senior_Student rdf:type owl:Class ;
+                rdfs:subClassOf :Student .
+
+
+###  http://www.semanticweb.org/user/ontologies/2022/example#Staff
+:Staff rdf:type owl:Class ;
+       owl:disjointWith :Student .
+
+
+###  http://www.semanticweb.org/user/ontologies/2022/example#Student
+:Student rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/user/ontologies/2022/example#Subject
+:Subject rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/user/ontologies/2022/example#Suppotring
+:Suppotring rdf:type owl:Class ;
+            rdfs:subClassOf :Non_Teaching .
+
+
+###  http://www.semanticweb.org/user/ontologies/2022/example#Teacher
+:Teacher rdf:type owl:Class ;
+         rdfs:subClassOf :Staff .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://www.semanticweb.org/user/ontologies/2022/example#Nat
+:Nat rdf:type owl:NamedIndividual ;
+     owl:sameAs :tony .
+
+
+###  http://www.semanticweb.org/user/ontologies/2022/example#anna
+:anna rdf:type owl:NamedIndividual ,
+               :Student ;
+      :JoinedID "2022-09-19T09:00:00"^^xsd:dateTime ;
+      :studentID "s1002"^^xsd:string .
+
+
+###  http://www.semanticweb.org/user/ontologies/2022/example#international_school
+:international_school rdf:type owl:NamedIndividual ,
+                               :School ;
+                      :admits :rick ;
+                      :employs :tony .
+
+
+###  http://www.semanticweb.org/user/ontologies/2022/example#kate
+:kate rdf:type owl:NamedIndividual ,
+               :Teacher ;
+      :teaches :anna ,
+               :rick ;
+      :teach "Literature"^^xsd:string .
+
+
+###  http://www.semanticweb.org/user/ontologies/2022/example#rick
+:rick rdf:type owl:NamedIndividual ;
+      :JoinedID "2022-09-18T08:00:00"^^xsd:dateTime ;
+      :studentID "S1001"^^xsd:string .
+
+
+###  http://www.semanticweb.org/user/ontologies/2022/example#sam
+:sam rdf:type owl:NamedIndividual ,
+              :House_Keeping ;
+     :tidies <http://www.semanticweb.org/user/ontologies/2022/example#1st_floor> .
+
+
+###  http://www.semanticweb.org/user/ontologies/2022/example#tony
+:tony rdf:type owl:NamedIndividual ,
+               :Teacher ;
+      :teaches :rick ;
+      :teach "Science"^^xsd:string .
+
+
+###  http://www.semanticweb.org/user/ontologies/2022/example#1st_floor
+<http://www.semanticweb.org/user/ontologies/2022/example#1st_floor> rdf:type owl:NamedIndividual .
+
+
+###  Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi
