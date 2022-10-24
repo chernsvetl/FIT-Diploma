@@ -9,24 +9,20 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.List;
 
-public class UpdateDocument {
+public class UpdateDocumentIZ_5 {
 
     public static void main(String[] args) throws IOException {
 
-        UpdateDocument obj = new UpdateDocument();
+        UpdateDocumentIZ_5 obj = new UpdateDocumentIZ_5();
 
-        /*obj.updateDocument(
-                "c:\\test\\template.docx",
-                "c:\\test\\output.docx",
-                "mkyong");*/
 
         obj.updateDocument(
-                "template.docx",
-                "C:\\Users\\User\\Desktop\\Диплом\\template\\apache-poi-examples\\src\\main\\resources\\output.docx",
-                "mkyong");
+                "5sem/iz_5sem_template.docx",
+                "C:\\Users\\User\\Desktop\\Диплом\\template\\apache-poi-examples\\src\\main\\resources\\bak_iz_5_pattern.docx",
+                "Общей информатики");
     }
 
-    private void updateDocument(String input, String output, String name) throws IOException {
+    void updateDocument(String input, String output, String name) throws IOException {
 
         try (InputStream is = getFileFromResource(input);
              XWPFDocument doc = new XWPFDocument(is)) {
